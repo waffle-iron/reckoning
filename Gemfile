@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-gem 'rails', '4.2.5.1'
+gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 
 gem 'pg'
 
@@ -13,15 +13,16 @@ gem 'valvat'
 gem 'active_model_serializers'
 
 gem 'sidekiq'
-# for sidekiq web
-gem 'sinatra', '>= 1.3.0', require: nil
+# # for sidekiq web
+gem 'sinatra', github: 'sinatra/sinatra', require: false
 
 gem 'haml'
 gem 'haml-rails'
 gem 'slim-rails'
+gem 'coffee-rails'
 
-gem 'devise'
-gem 'devise-two-factor'
+gem 'devise', github: 'plataformatec/devise', branch: :master
+gem 'devise-two-factor', github: 'tinfoil/devise-two-factor', branch: :master
 gem 'rqrcode-rails3'
 gem 'mini_magick'
 gem 'cancancan'
@@ -35,14 +36,16 @@ gem 'dynamic_fields_for_rails'
 
 gem 'workflow'
 
-gem 'sass-rails'
-gem 'coffee-rails'
+gem 'sass-rails', '~> 6.0.0.beta1'
 gem 'bourbon'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
 gem 'jquery-rails'
+gem 'turbolinks', '~> 5.x'
+
+gem 'redis', '~> 3.0'
 
 gem 'js-routes'
 
@@ -53,7 +56,7 @@ gem 'redcarpet'
 gem 'puma'
 
 gem "i18n-js", ">= 3.0.0.rc11"
-gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-i18n', '~> 5.0.0.beta3'
 
 gem 'thor'
 gem 'highline'
@@ -92,7 +95,7 @@ gem 'pry-rails', group: :development
 
 group :test do
   gem 'rails-perftest'
-  gem 'minitest-rails'
+  # gem 'minitest-rails'
   gem 'ruby-prof'
   gem 'database_cleaner'
   gem 'factory_girl'

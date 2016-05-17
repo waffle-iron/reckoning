@@ -1,4 +1,4 @@
-class Customer < ActiveRecord::Base
+class Customer < ApplicationRecord
   belongs_to :account
   has_many :projects, dependent: :destroy
   has_many :invoices, dependent: :destroy

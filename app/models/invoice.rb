@@ -1,4 +1,4 @@
-class Invoice < ActiveRecord::Base
+class Invoice < ApplicationRecord
   DEFAULT_PAYMENT_DUE_DAYS = 14
 
   belongs_to :account

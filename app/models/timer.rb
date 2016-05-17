@@ -1,6 +1,6 @@
 require 'roo'
 
-class Timer < ActiveRecord::Base
+class Timer < ApplicationRecord
   belongs_to :task, touch: true
   belongs_to :user
   belongs_to :position

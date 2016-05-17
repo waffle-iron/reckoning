@@ -1,4 +1,4 @@
-class Account < ActiveRecord::Base
+class Account < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :positions, through: :invoices

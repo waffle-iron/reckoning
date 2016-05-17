@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :two_factor_authenticatable, :two_factor_backupable, :confirmable, :lockable, :recoverable,
          :registerable, :rememberable, :trackable, :validatable,
          otp_secret_encryption_key: Rails.application.secrets[:devise_otp],

@@ -57,6 +57,8 @@ class ApplicationController < ActionController::Base
   helper_method :invoice_limit_reached?
 
   protected def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_in) << :otp_attempt
+    devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+      user_params.permit(:otp_attempt)
+    end
   end
 end

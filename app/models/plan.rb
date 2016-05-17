@@ -1,4 +1,4 @@
-class Plan < ActiveRecord::Base
+class Plan < ApplicationRecord
   validates :code, :quantity, :base_price, :interval, :stripe_plan_id, presence: true
 
   before_validation :prefill_from_base_plan, on: :create
