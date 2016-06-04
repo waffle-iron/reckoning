@@ -17,7 +17,7 @@
 .row
   .col-xs-12.col-md-4.form-group
     .btn-group
-      = link_to otp_me_path, class: "btn btn-default" do
+      = link_to otp_me_path(anchor: "security"), class: "btn btn-default" do
         %i.fa.fa-qrcode
         = I18n.t(:"nav.subnav.user.otp")
 
@@ -27,4 +27,4 @@
         - else
           %i.fa.fa-close
   .col-xs-12.col-md-4.form-group
-    = link_to I18n.t(:"nav.subnav.update_password"), edit_password_path, class: "btn btn-warning"
+    = link_to I18n.t(:"nav.subnav.update_password"), edit_password_path(anchor: "security"), class: "btn btn-warning"

@@ -5,9 +5,6 @@
     = render "users/header", path: "#{edit_user_registration_path}#security"
 
     .row
-      .col-xs-12.col-lg-2.col-md-3.col-sm-3
-        = render "users/nav", path: edit_user_registration_path, active: "security"
-
       .col-xs-12.col-lg-10.col-md-9.col-sm-9
         .tab-pane#security
           fieldset
@@ -50,7 +47,6 @@
                   = I18n.t(:enable_explain, scope: 'devise.otp')
                 .row
                   .col-xs-12.col-md-6
-                    = current_user.otp_provisioning_uri(current_user.email, issuer: Rails.application.secrets[:devise_otp_issuer])
                     = image_tag otp_qrcode_me_path, class: "otp-qrcode"
                 br
                 .row
@@ -61,3 +57,6 @@
                   .btn-group-responsive
                     button.btn.btn-primary.btn-lg
                       = I18n.t(:enable, scope: 'devise.otp')
+                      
+      .col-xs-12.col-lg-2.col-md-3.col-sm-3
+        = render "users/nav", path: edit_user_registration_path, active: "security"

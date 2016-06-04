@@ -22,7 +22,7 @@ gem 'slim-rails'
 gem 'coffee-rails'
 
 gem 'devise', github: 'plataformatec/devise', branch: :master
-gem 'devise-two-factor', github: 'tinfoil/devise-two-factor', branch: :master
+gem 'devise-two-factor'
 gem 'rqrcode-rails3'
 gem 'mini_magick'
 gem 'cancancan'
@@ -113,6 +113,6 @@ group :development, :test do
   # debugging
   gem 'bullet'
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'spring'
 end

@@ -141,7 +141,7 @@ class Invoice < ApplicationRecord
 
   def inline_pdf
     WickedPdf.new.pdf_from_string(
-      ApplicationController.new.render_to_string("invoices/pdf", inline_pdf_options),
+      render_pdf_template("invoices/pdf"),
       whicked_pdf_options
     )
   end
@@ -152,31 +152,30 @@ class Invoice < ApplicationRecord
 
   def inline_timesheet_pdf
     WickedPdf.new.pdf_from_string(
-      ApplicationController.new.render_to_string("invoices/timesheet", inline_pdf_options),
+      render_pdf_template("invoices/timesheet"),
       whicked_pdf_options
     )
   end
 
   def pdf_options(file)
     {
-      pdf: file
-    }.merge(inline_pdf_options).merge(whicked_pdf_options)
-  end
-
-  def inline_pdf_options
-    {
+      pdf: file,
       layout: "layouts/pdf",
       locals: { resource: self }
-    }
+    }.merge(whicked_pdf_options)
+  end
+
+  def render_pdf_template(template)
+    ApplicationController.render(template, layout: "layouts/pdf", locals: { resource: self })
   end
 
   def whicked_pdf_options
     {
       header: {
-        content: ApplicationController.new.render_to_string("shared/pdf_header", inline_pdf_options)
+        content: render_pdf_template("shared/pdf_header")
       },
       footer: {
-        content: ApplicationController.new.render_to_string("shared/pdf_footer", inline_pdf_options)
+        content: render_pdf_template("shared/pdf_footer")
       },
       margin: {
         top: 30,
@@ -200,10 +199,6 @@ class Invoice < ApplicationRecord
 
   private def set_ref
     last_invoice = Invoice.where(account_id: account_id).order("ref DESC").first
-    self.ref = if last_invoice.present?
-                 last_invoice.ref + 1
-               else
-                 1
-               end
+    self.ref = last_invoice.present? ? last_invoice.ref + 1 : 1
   end
 end
