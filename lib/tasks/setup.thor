@@ -20,12 +20,14 @@ class Setup < Thor
         puts "E-Mail can't be blank!"
         exit
       end
-      password = HighLine.ask("Password: ") {|q| q.echo = '*'}
+
+      password = HighLine.ask("Password: ") { |q| q.echo = '*' }
       if password.blank?
         puts "Password can't be blank!"
         exit
       end
-      password_confirmation = HighLine.ask("Password (again): ") {|q| q.echo = '*'}
+
+      password_confirmation = HighLine.ask("Password (again): ") { |q| q.echo = '*' }
     end
 
     if password_confirmation != password
@@ -50,7 +52,6 @@ class Setup < Thor
     app_dir = File.join(File.dirname(__FILE__), '..', '..')
     run "mkdir #{app_dir}/files"
     run "cp #{app_dir}/config/database.example.yml #{app_dir}/config/database.yml"
-    run "cp #{app_dir}/config/secrets.example.yml #{app_dir}/config/secrets.yml"
     run "cp #{app_dir}/.env.example #{app_dir}/.env"
   end
 end
