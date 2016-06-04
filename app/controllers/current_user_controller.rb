@@ -28,6 +28,7 @@ class CurrentUserController < ApplicationController
 
   def enable_otp
     authorize! :update, current_user
+
     if current_user.validate_and_consume_otp!(otp_attempt)
       current_user.otp_required_for_login = true
       @codes = current_user.generate_otp_backup_codes!
@@ -36,6 +37,7 @@ class CurrentUserController < ApplicationController
     else
       flash.now[:alert] = I18n.t(:"messages.enable.failure", scope: 'devise.otp')
     end
+
     render "otp"
   end
 

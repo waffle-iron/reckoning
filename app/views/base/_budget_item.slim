@@ -2,4 +2,4 @@ a.list-group-item href=project_path(project)
   .budget-label
     = project.name_with_customer
   .progress.progress-slim.text-center
-    .progress-bar class=budget_progress(project) role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: #{project.budget_percent}%"
+    .progress-bar class=budget_progress(project.budget_percent) role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: #{project.budget_percent}%"
