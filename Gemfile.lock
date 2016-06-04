@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/blowmage/minitest-rails.git
+  revision: 2a7b5ffaeb4f5164144bfd82923e22e349d84580
+  branch: master
+  specs:
+    minitest-rails (3.0.0.rc1.20160507123149)
+      minitest (~> 5.8)
+      railties (~> 5.0.0.rc1)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: bcdd54cc5ebd3413eeb3d17e3b634e8ace0d09f3
   branch: master
@@ -267,7 +276,6 @@ GEM
     rails-i18n (5.0.0.beta3)
       i18n (~> 0.7)
       railties (~> 5.0.0.beta1)
-    rails-perftest (0.0.6)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -429,6 +437,7 @@ DEPENDENCIES
   js-routes
   kaminari
   mini_magick
+  minitest-rails!
   mocha
   money
   non-stupid-digest-assets
@@ -445,7 +454,6 @@ DEPENDENCIES
   rack-cors
   rails (>= 5.0.0.beta3, < 5.1)
   rails-i18n (~> 5.0.0.beta3)
-  rails-perftest
   rails_12factor
   redcarpet
   redis (~> 3.0)

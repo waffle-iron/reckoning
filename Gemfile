@@ -94,8 +94,7 @@ gem 'non-stupid-digest-assets'
 gem 'pry-rails', group: :development
 
 group :test do
-  gem 'rails-perftest'
-  # gem 'minitest-rails'
+  gem 'minitest-rails', github: 'blowmage/minitest-rails', branch: :master
   gem 'ruby-prof'
   gem 'database_cleaner'
   gem 'factory_girl'
@@ -113,6 +112,9 @@ group :development, :test do
   # debugging
   gem 'bullet'
   gem 'byebug'
-  gem 'web-console'
   gem 'spring'
+end
+
+group :development do
+  gem 'web-console'
 end
