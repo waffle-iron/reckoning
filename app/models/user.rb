@@ -14,12 +14,11 @@ class User < ApplicationRecord
   validates :email, email: true
 
   def update_gravatar_hash
-    hash = if gravatar.blank?
-             Digest::MD5.hexdigest(id.to_s)
-           else
-             Digest::MD5.hexdigest(gravatar.downcase.strip)
-           end
-    self.gravatar_hash = hash
+    self.gravatar_hash = if gravatar.present?
+                           Digest::MD5.hexdigest(gravatar.downcase.strip)
+                         else
+                           Digest::MD5.hexdigest(id.to_s)
+                         end
   end
 
   def ensure_authentication_token
