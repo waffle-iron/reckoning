@@ -9,11 +9,13 @@ class InvoicesController < ApplicationController
     authorize! :read, Invoice
     state = params.fetch(:state, nil)
     year = params.fetch(:year, nil)
+    paid_in_year = params.fetch(:paid_in_year, nil)
     @invoices = current_account.invoices
     if state.present? && Invoice.workflow_spec.state_names.include?(state.to_sym)
       @invoices = @invoices.send(state)
     end
     @invoices = @invoices.year(year) if year.present? && year =~ /\d{4}/
+    @invoices = @invoices.paid_in_year(paid_in_year) if paid_in_year.present? && paid_in_year =~ /\d{4}/
     @invoices = @invoices.includes(:customer, :project).references(:customers)
                 .order(sort_column + " " + sort_direction)
                 .page(params.fetch(:page, nil))
@@ -200,6 +202,11 @@ class InvoicesController < ApplicationController
       ]
     )
   end
+
+  private def filter_params
+    params.permit(:state, :year, :paid_in_year)
+  end
+  helper_method :filter_params
 
   private def project
     @project ||= current_account.projects.find_by(id: params.fetch(:project_uuid, nil))
