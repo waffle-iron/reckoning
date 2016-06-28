@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/mortik/reckoning.png?label=ready&title=Ready)](https://waffle.io/mortik/reckoning)
 # Reckoning
 
 [![Circle CI](https://circleci.com/gh/reckoning/app.svg?style=svg)](https://circleci.com/gh/reckoning/app)
